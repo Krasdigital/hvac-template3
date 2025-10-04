@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Filterbuy-style HVAC Navbar</title>
+
+  <!-- Tailwind v3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0FA958',       /* main green */
+            brandDark: '#0A7A40',   /* darker for hovers */
+            accent: '#00C07B',      /* caret/accents */
+            ink: '#0F172A',         /* slate-900-ish for text */
+            border: '#E5E7EB'       /* light border */
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Prevent accidental horizontal scroll on small devices */
+    html, body { overflow-x: hidden; }
+    /* Simple caret */
+    .caret::after {
+      content: '';
+      display: inline-block;
+      margin-left: .35rem;
+      width: .38rem;
+      height: .38rem;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      color: theme('colors.accent');
+    }
+  </style>
+</head>
+<body class="antialiased text-ink bg-white">
+
+ <!-- =============================
+     Header: Utility bar + Main bar (tweaked)
+============================== -->
+<header class="sticky top-0 z-50 bg-white">
+    <!-- Utility bar (top) -->
+    <div class="bg-slate-50 border-b">
+      <!-- more padding + all content flush-right -->
+      <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-end gap-8 text-sm">
+        <nav class="hidden md:flex items-center gap-6 text-slate-600">
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">REVIEWS</a>
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">FINANCING</a>
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">ABOUT US</a>
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">RESOURCES/BLOG</a>
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">CONTACT US</a>
+        </nav>
+  
+        <!-- phone (kept on one line) -->
+        <a href="tel:+18334183331" class="flex items-center gap-2 font-semibold text-slate-800 whitespace-nowrap">
+          <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 1.08 3.18 2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L7.59 8.91a16 16 0 0 0 6 6l1.48-1.18a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          (833) 418-999931
+        </a>
+      </div>
+    </div>
+  
+    <!-- Main bar (bottom) -->
+    <div class="border-b">
+      <!-- more padding + flex-nowrap so items never wrap -->
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-6">
+        <!-- Logo -->
+        <a href="#" class="flex items-center shrink-0" aria-label="Filterbuy HVAC Solutions">
+          <!-- Replace with your real logo if you have it -->
+          <svg viewBox="0 0 280 48" class="h-9" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg-fb" x1="0" x2="1">
+                <stop offset="0" stop-color="#22c55e"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <path d="M8 32V16l48-8v32H8z" fill="url(#lg-fb)" opacity=".15"/>
+            <text x="64" y="30" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700" fill="#0f172a">FILTERBUY</text>
+            <text x="64" y="44" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial" font-size="12" fill="#334155">HVAC SOLUTIONS</text>
+          </svg>
+        </a>
+  
+        <!-- Primary nav: never wrap, single line -->
+        <nav class="hidden lg:flex ml-2 items-center gap-8 flex-nowrap whitespace-nowrap text-slate-800">
+          <button class="inline-flex items-center gap-2 whitespace-nowrap hover:text-slate-900">
+            Cooling
+            <svg class="w-3.5 h-3.5 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+          </button>
+  
+          <button class="inline-flex items-center gap-2 whitespace-nowrap hover:text-slate-900">
+            Air Quality
+            <svg class="w-3.5 h-3.5 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+          </button>
+  
+          <button class="inline-flex items-center gap-2 whitespace-nowrap hover:text-slate-900">
+            Ductwork
+            <svg class="w-3.5 h-3.5 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+          </button>
+  
+          <button class="inline-flex items-center gap-2 whitespace-nowrap hover:text-slate-900">
+            Other Services
+            <svg class="w-3.5 h-3.5 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+          </button>
+  
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">Specials</a>
+          <a href="#" class="hover:text-slate-900 whitespace-nowrap">Service Areas</a>
+        </nav>
+  
+        <!-- Right actions -->
+        <div class="ml-auto flex items-center gap-4">
+          <!-- phone (visible xl+, single line) -->
+          <a href="tel:+18334183331" class="hidden xl:flex items-center gap-2 font-semibold text-slate-800 whitespace-nowrap">
+            <svg class="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 1.08 3.18 2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.6a2 2 0 0 1-.45 2.11L7.59 8.91a16 16 0 0 0 6 6l1.48-1.18a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.6.66A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (833) 418-3331
+          </a>
+  
+          <a href="#book"
+             class="inline-flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 font-semibold text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 whitespace-nowrap">
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="relative isolate overflow-hidden bg-white">
+    <!-- full-bleed wrapper so the section spans the viewport width even inside a container -->
+    <div class="relative w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]">
+      <div class="grid md:grid-cols-2 w-full min-h-[72vh]">
+        <!-- Left: copy + form -->
+        <div class="relative bg-[#E9F7F4] px-6 sm:px-10 lg:px-14 py-12 lg:py-16">
+          <p class="text-xs font-semibold tracking-[0.2em] text-[#16A34A] uppercase mb-4">
+            Better Air For All
+          </p>
+  
+          <h1 class="text-[#0B1323] font-extrabold tracking-tight uppercase leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
+            Florida's Trusted AC &amp;<br class="hidden sm:block" />
+            Air Quality Experts
+          </h1>
+  
+          <p class="mt-5 max-w-2xl text-slate-700 text-lg leading-relaxed">
+            Third-generation, family-owned and operated. Repairs, maintenance, installs and more.
+            Let our family keep yours cool and comfortable.
+          </p>
+  
+          <!-- Form -->
+          <form class="mt-8 space-y-4" action="#" method="post" aria-labelledby="lead-form-title">
+            <h2 id="lead-form-title" class="sr-only">Schedule Consultation</h2>
+  
+            <!-- Row 1 -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="sr-only" for="full_name">Full Name</label>
+              <input id="full_name" name="full_name" type="text" inputmode="text" autocomplete="name"
+                     placeholder="FULL NAME"
+                     class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-4 text-slate-900 placeholder:tracking-wide placeholder:text-slate-500 placeholder:font-semibold placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-[#16A34A]" />
+  
+              <label class="sr-only" for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                     placeholder="PHONE NUMBER"
+                     class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-4 text-slate-900 placeholder:tracking-wide placeholder:text-slate-500 placeholder:font-semibold placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-[#16A34A]" />
+            </div>
+  
+            <!-- Row 2 -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                     placeholder="EMAIL"
+                     class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-4 text-slate-900 placeholder:tracking-wide placeholder:text-slate-500 placeholder:font-semibold placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-[#16A34A]" />
+  
+              <label class="sr-only" for="zip">ZIP Code</label>
+              <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code"
+                     placeholder="ZIP CODE"
+                     class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-4 text-slate-900 placeholder:tracking-wide placeholder:text-slate-500 placeholder:font-semibold placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-[#16A34A]" />
+            </div>
+  
+            <!-- Row 3 -->
+            <div class="relative">
+              <label class="sr-only" for="service">Service Choice</label>
+              <select id="service" name="service"
+                      class="w-full appearance-none rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-4 pr-12 text-slate-900 text-sm font-semibold tracking-wide uppercase focus:outline-none focus:ring-2 focus:ring-[#16A34A]">
+                <option value="">SERVICE CHOICE</option>
+                <option>AC Repair</option>
+                <option>AC Installation</option>
+                <option>Maintenance / Tune-Up</option>
+                <option>Air Duct &amp; IAQ</option>
+              </select>
+              <!-- chevrons -->
+              <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center gap-0.5">
+                <svg class="w-4 h-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+              </div>
+            </div>
+  
+            <!-- Consent -->
+            <div class="mt-1">
+              <label class="flex items-start gap-3 text-[13px] text-slate-600 leading-relaxed">
+                <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-[#16A34A] focus:ring-[#16A34A]" />
+                <span>
+                  By submitting, you authorize Filterbuy Local, LLC to reach out via phone, email, or text for explicit
+                  information about the requested HVAC service. We will never share your personal information with
+                  3rd parties for marketing purposes or spam you. You can opt out at any time. Message/data rates may apply.
+                  Consent is not a condition of purchase.
+                  <a href="#" class="underline decoration-1 underline-offset-2 hover:text-slate-900 ml-1">Terms</a>
+                  <span class="mx-1">|</span>
+                  <a href="#" class="underline decoration-1 underline-offset-2 hover:text-slate-900">Privacy Policy</a>
+                </span>
+              </label>
+            </div>
+  
+            <!-- CTA -->
+            <button type="submit"
+                    class="w-full rounded-xl bg-[#16A34A] px-6 py-4 text-white font-semibold text-lg shadow-sm hover:bg-emerald-600 active:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#16A34A]">
+              Schedule a FREE Consultation
+            </button>
+          </form>
+        </div>
+  
+        <!-- Right: image/video + rating card -->
+        <div class="relative min-h-[48vh] md:min-h-[72vh]">
+          <!-- Replace with your video or photo -->
+          <img src="https://picsum.photos/id/1050/1600/1200"
+               alt="Technician speaking with homeowner near outdoor AC unit"
+               class="absolute inset-0 h-full w-full object-cover" />
+  
+          <!-- Rating card -->
+          <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl ring-1 ring-black/5 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-4">
+            <!-- Google 'G' -->
+            <div class="flex items-center justify-center w-12 h-12 rounded-full ring-1 ring-slate-200">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" aria-hidden="true">
+                <path fill="#EA4335" d="M12 10.2v3.7h5.2c-.2 1.2-1.6 3.6-5.2 3.6-3.1 0-5.6-2.6-5.6-5.8s2.5-5.8 5.6-5.8c1.8 0 3 .7 3.7 1.4l2.5-2.4C16.9 3.1 14.7 2 12 2 6.9 2 2.8 6.1 2.8 11.2S6.9 20.4 12 20.4c6 0 8.1-4.2 8.1-6.2 0-.4 0-.7-.1-1H12z"/>
+                <path fill="#34A853" d="M3.9 7.7l3 2.2c.8-2.2 2.9-3.8 5.1-3.8 1.8 0 3 .7 3.7 1.4l2.5-2.4C16.9 3.1 14.7 2 12 2 8.5 2 5.5 4.1 3.9 7.7z" opacity=".001"/>
+                <path fill="#FBBC05" d="M12 22c4.7 0 8.6-3.1 8.6-7.8 0-.5-.1-1-.2-1.4H12v3.7h5.2c-.2 1.2-1.6 3.6-5.2 3.6-3.1 0-5.6-2.6-5.6-5.8 0-.9.2-1.7.6-2.4l-3-2.3C3.3 10.7 3 11.9 3 13.2 3 18.1 7.1 22 12 22z" opacity=".001"/>
+                <path fill="#4285F4" d="M20.4 10.8H12v3.1h4.8c-.2 1.2-1.6 3.6-4.8 3.6-2.9 0-5.3-2.4-5.3-5.3s2.4-5.3 5.3-5.3c1.7 0 2.8.7 3.4 1.3l2.3-2.2C16.3 4.7 14.3 3.7 12 3.7 7.9 3.7 4.6 7 4.6 11.1s3.3 7.4 7.4 7.4c4.5 0 7.7-3.2 7.7-7.7 0-.3 0-.6-.1-1z"/>
+              </svg>
+            </div>
+  
+            <div>
+              <div class="flex items-center gap-3">
+                <p class="text-2xl font-extrabold text-slate-900">4.8</p>
+                <div class="flex items-center gap-0.5" aria-hidden="true">
+                  <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4 text-[#F59E0B]" viewBox="0 0 20 20" fill="currentColor" opacity=".3"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+              </div>
+              <p class="mt-0.5 text-[13px] text-slate-600"><span class="sr-only">Rating: </span>Stars <span aria-hidden="true">682 reviews</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+<!-- =========================
+     Services (Tabs: one at a time)
+========================== -->
+<section id="services" class="bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-24">
+  
+      <!-- Header / intro -->
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div>
+          <p class="text-emerald-700 font-semibold uppercase tracking-[0.18em] text-sm">
+            Comprehensive Services
+          </p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
+            More than just HVAC — we offer complete home comfort solutions
+          </h2>
+        </div>
+        <p class="text-lg lg:text-xl leading-relaxed text-slate-600">
+          A third-generation, family-owned and operated business, Filterbuy has grown
+          to become a trusted name in indoor air quality. With HVAC Solutions, we bring
+          the same exceptional service and value to all your home comfort needs.
+        </p>
+      </div>
+  
+      <!-- Tablist -->
+      <div class="mt-10 border-b border-slate-200">
+        <div role="tablist" aria-label="Service categories" class="flex gap-10 overflow-x-auto">
+          <button
+            id="tab-cooling"
+            role="tab"
+            aria-controls="panel-cooling"
+            aria-selected="true"
+            data-tab="cooling"
+            class="whitespace-nowrap -mb-px pb-3 text-lg font-semibold border-b-2 border-emerald-600 text-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+            Cooling
+          </button>
+  
+          <button
+            id="tab-air-quality"
+            role="tab"
+            aria-controls="panel-air-quality"
+            aria-selected="false"
+            data-tab="air-quality"
+            class="whitespace-nowrap -mb-px pb-3 text-lg font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+            Air Quality
+          </button>
+  
+          <button
+            id="tab-duct-work"
+            role="tab"
+            aria-controls="panel-duct-work"
+            aria-selected="false"
+            data-tab="duct-work"
+            class="whitespace-nowrap -mb-px pb-3 text-lg font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+            Duct Work
+          </button>
+  
+          <button
+            id="tab-other-services"
+            role="tab"
+            aria-controls="panel-other-services"
+            aria-selected="false"
+            data-tab="other-services"
+            class="whitespace-nowrap -mb-px pb-3 text-lg font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+            Other Services
+          </button>
+        </div>
+      </div>
+  
+      <!-- Panels -->
+      <div class="mt-12">
+  
+        <!-- Cooling -->
+        <div
+          id="panel-cooling"
+          role="tabpanel"
+          aria-labelledby="tab-cooling"
+          class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-slate-900">
+              Expert Cooling Services for Year-Round Comfort
+            </h3>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Filterbuy provides quality cooling solutions, including AC installation,
+              replacement, repair, and maintenance. Whether you need a new system,
+              emergency repairs, or energy-efficient upgrades like ductless AC, our
+              expert team ensures your home stays cool and comfortable.
+            </p>
+  
+            <div class="mt-8 grid sm:grid-cols-2 gap-6">
+              <ul class="divide-y divide-slate-200">
+                <li>
+                  <a href="#" class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-900">
+                    <span>AC Installations</span>
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-emerald-600 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-900">
+                    <span>Ductless</span>
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-emerald-600 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-900">
+                    <span>Emergency Repairs</span>
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-emerald-600 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">→</span>
+                  </a>
+                </li>
+              </ul>
+  
+              <ul class="divide-y divide-slate-200">
+                <li>
+                  <a href="#" class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-900">
+                    <span>Maintenance</span>
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-emerald-600 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-900">
+                    <span>HVAC Restorations</span>
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-emerald-600 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">→</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+          <figure class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1581091870633-1e04c98b6d47?q=80&w=1600&auto=format&fit=crop"
+              alt="Technicians moving an outdoor AC condenser"
+              class="absolute inset-0 h-full w-full object-cover" />
+          </figure>
+        </div>
+  
+        <!-- Air Quality -->
+        <div
+          id="panel-air-quality"
+          role="tabpanel"
+          aria-labelledby="tab-air-quality"
+          class="hidden grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-slate-900">Cleaner, Healthier Indoor Air</h3>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              From purification and filtration to humidity control and ventilation, our
+              IAQ solutions help your family breathe easier year-round.
+            </p>
+  
+            <div class="mt-8 grid sm:grid-cols-2 gap-6">
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Air Purifiers <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Dehumidifiers <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">UV Lights <span>→</span></a></li>
+              </ul>
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Whole-Home Filtration <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Ventilation <span>→</span></a></li>
+              </ul>
+            </div>
+          </div>
+  
+          <figure class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1600&auto=format&fit=crop"
+              alt="Modern air purifier and fresh interior"
+              class="absolute inset-0 h-full w-full object-cover" />
+          </figure>
+        </div>
+  
+        <!-- Duct Work -->
+        <div
+          id="panel-duct-work"
+          role="tabpanel"
+          aria-labelledby="tab-duct-work"
+          class="hidden grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-slate-900">Efficient Airflow with Professional Duct Services</h3>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              We design, repair, and clean ductwork so your system delivers comfort where you need it most.
+            </p>
+            <div class="mt-8 grid sm:grid-cols-2 gap-6">
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Duct Design <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Duct Sealing <span>→</span></a></li>
+              </ul>
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Duct Cleaning <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Duct Repairs <span>→</span></a></li>
+              </ul>
+            </div>
+          </div>
+  
+          <figure class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1569060368206-1039081a6f77?q=80&w=1600&auto=format&fit=crop"
+              alt="Technician checking air ducts"
+              class="absolute inset-0 h-full w-full object-cover" />
+          </figure>
+        </div>
+  
+        <!-- Other Services -->
+        <div
+          id="panel-other-services"
+          role="tabpanel"
+          aria-labelledby="tab-other-services"
+          class="hidden grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-slate-900">More Home Comfort Services</h3>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Beyond HVAC, we offer solutions tailored to your home’s needs—always with quality and reliability.
+            </p>
+            <div class="mt-8 grid sm:grid-cols-2 gap-6">
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Thermostats <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Attic Insulation <span>→</span></a></li>
+              </ul>
+              <ul class="divide-y divide-slate-200">
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Smart Home Setup <span>→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between py-4 text-lg font-semibold text-slate-900">Energy Audits <span>→</span></a></li>
+              </ul>
+            </div>
+          </div>
+  
+          <figure class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1573891522700-9d1b15606f19?q=80&w=1600&auto=format&fit=crop"
+              alt="Home comfort devices and installation"
+              class="absolute inset-0 h-full w-full object-cover" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tabs JS (accessibility + deep links) -->
+  <script>
+  (function () {
+    const tabs = Array.from(document.querySelectorAll('[data-tab]'));
+    const panels = {
+      'cooling': document.getElementById('panel-cooling'),
+      'air-quality': document.getElementById('panel-air-quality'),
+      'duct-work': document.getElementById('panel-duct-work'),
+      'other-services': document.getElementById('panel-other-services'),
+    };
+  
+    function setActive(name, pushHash = true) {
+      // update tabs
+      tabs.forEach(btn => {
+        const active = btn.dataset.tab === name;
+        btn.setAttribute('aria-selected', active);
+        btn.classList.toggle('text-emerald-700', active);
+        btn.classList.toggle('border-emerald-600', active);
+        btn.classList.toggle('border-transparent', !active);
+        btn.classList.toggle('text-slate-500', !active);
+      });
+  
+      // update panels
+      Object.entries(panels).forEach(([key, el]) => {
+        if (!el) return;
+        el.classList.toggle('hidden', key !== name);
+      });
+  
+      // hash for deep-linking
+      if (pushHash) {
+        const hash = '#' + name;
+        if (location.hash !== hash) history.replaceState(null, '', hash);
+      }
+    }
+  
+    // Clicks
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => setActive(btn.dataset.tab));
+      // Arrow key navigation
+      btn.addEventListener('keydown', (e) => {
+        const idx = tabs.indexOf(btn);
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const next = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+          tabs[next].focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setActive(btn.dataset.tab);
+        }
+      });
+    });
+  
+    // On load: activate hash or default
+    const start = (location.hash || '#cooling').replace('#', '');
+    setActive(panels[start] ? start : 'cooling', false);
+  
+    // If hash changes externally
+    window.addEventListener('hashchange', () => {
+      const name = (location.hash || '#cooling').replace('#', '');
+      if (panels[name]) setActive(name, false);
+    });
+  })();
+  </script>
+<!-- =============================
+     Specials: Carousel + Lead Form
+============================== -->
+<section id="hvac-specials" class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20 grid gap-10 lg:gap-14 md:grid-cols-2">
+  
+      <!-- LEFT: CAROUSEL -->
+      <div id="specialsSlider" class="relative overflow-hidden rounded-2xl ring-1 ring-black/10 bg-white"
+           aria-label="Limited-time HVAC specials" aria-live="polite">
+        <!-- Slides wrapper (we hide/show slides) -->
+        <div class="relative">
+          <!-- Slide 1 -->
+          <article class="slide not-hidden p-5 sm:p-6 lg:p-8 grid gap-6 lg:grid-cols-2 items-center">
+            <figure class="aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full overflow-hidden rounded-xl ring-1 ring-black/5">
+              <img
+                src="https://images.unsplash.com/photo-1606167668584-78701c57f13a?q=80&w=1200&auto=format&fit=crop"
+                alt="Technician performing AC maintenance" class="h-full w-full object-cover" />
+            </figure>
+  
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                Get Comprehensive A/C Maintenance for Only <span class="text-emerald-600">$1 a Month</span>
+              </h3>
+              <p class="mt-3 text-slate-700 leading-relaxed">
+                Stop worrying about your A/C—let our Care Club keep it humming with
+                routine maintenance and priority support. No obligations. No strings.
+              </p>
+  
+              <ul class="mt-5 space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  <span class="font-semibold text-slate-900">Two Annual Tune Ups</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Drainline Flushes
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Free Emergency Call
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Condenser Coil Cleaning
+                </li>
+              </ul>
+            </div>
+          </article>
+  
+          <!-- Slide 2 -->
+          <article class="slide hidden p-5 sm:p-6 lg:p-8 grid gap-6 lg:grid-cols-2 items-center">
+            <figure class="aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full overflow-hidden rounded-xl ring-1 ring-black/5">
+              <img
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
+                alt="Technician installing UV light in an HVAC system"
+                class="h-full w-full object-cover" />
+            </figure>
+  
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                There’s Clean, and There’s <span class="text-emerald-600">UV Clean</span>
+              </h3>
+              <p class="mt-3 text-slate-700 leading-relaxed">
+                Reduce bacteria, viruses, and mold spores where filters can’t reach with a
+                germicidal UV light installation. Labor and parts included.
+              </p>
+  
+              <ul class="mt-5 space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Reduce Risk of Illness &amp; Disease
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Soothe Allergy &amp; Asthma Symptoms
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Freshen Your Space
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-0.5 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.704 5.29a1 1 0 10-1.408-1.42L8.5 10.67 6.004 8.177a1 1 0 10-1.414 1.414l3.2 3.2a1 1 0 001.414 0l7.5-7.5z"/></svg>
+                  Extend HVAC Lifespan
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+  
+        <!-- Controls -->
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-between p-3 sm:p-4">
+          <button type="button" class="pointer-events-auto rounded-full bg-white/90 hover:bg-white shadow ring-1 ring-black/10 p-2"
+                  data-slide="prev" aria-label="Previous special">
+            <svg class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L8.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <button type="button" class="pointer-events-auto rounded-full bg-white/90 hover:bg-white shadow ring-1 ring-black/10 p-2"
+                  data-slide="next" aria-label="Next special">
+            <svg class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586l-4.293 4.293a1 1 0 11-1.414-1.414L10.172 9H4a1 1 0 110-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+  
+        <!-- Dots -->
+        <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+          <button class="dot h-1.5 w-6 rounded-full bg-emerald-600" aria-label="Show maintenance special" aria-current="true"></button>
+          <button class="dot h-1.5 w-6 rounded-full bg-slate-300 hover:bg-slate-400" aria-label="Show UV light special"></button>
+        </div>
+      </div>
+  
+      <!-- RIGHT: FORM -->
+      <div class="relative">
+        <div class="rounded-2xl ring-1 ring-black/10 shadow-xl bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-200 p-6 sm:p-7 lg:p-8">
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+            Submit the Form Below to Save Big!
+          </h2>
+  
+          <form class="mt-6 space-y-4" action="#" method="post">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="sr-only" for="sp_name">Full Name</label>
+              <input id="sp_name" name="name" type="text" inputmode="text" autocomplete="name"
+                placeholder="FULL NAME"
+                class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-3.5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+  
+              <label class="sr-only" for="sp_phone">Phone Number</label>
+              <input id="sp_phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                placeholder="PHONE NUMBER"
+                class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-3.5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            </div>
+  
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="sr-only" for="sp_email">Email</label>
+              <input id="sp_email" name="email" type="email" inputmode="email" autocomplete="email"
+                placeholder="EMAIL"
+                class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-3.5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+  
+              <label class="sr-only" for="sp_zip">ZIP Code</label>
+              <input id="sp_zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code"
+                placeholder="ZIP CODE"
+                class="w-full rounded-xl border-0 ring-1 ring-slate-200 bg-white px-4 py-3.5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            </div>
+  
+            <fieldset class="mt-1">
+              <legend class="text-sm font-semibold text-slate-800">Which specials are you interested in?</legend>
+              <div class="mt-3 space-y-2">
+                <label class="flex items-center gap-3 text-slate-700">
+                  <input type="checkbox" name="opt_maint" class="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                  <span>$1/month A/C Maintenance</span>
+                </label>
+                <label class="flex items-center gap-3 text-slate-700">
+                  <input type="checkbox" name="opt_uv" class="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                  <span>$299 UV Light Installation</span>
+                </label>
+                <label class="flex items-center gap-3 text-slate-700">
+                  <input type="checkbox" name="opt_none" class="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                  <span>None</span>
+                </label>
+              </div>
+            </fieldset>
+  
+            <label class="mt-2 flex items-start gap-3 text-[13px] text-slate-700 leading-relaxed">
+              <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+              <span>
+                By submitting, you authorize Filterbuy Local, LLC to reach out via phone, email, or text for explicit
+                information about the requested HVAC service. We will never share your personal information with
+                3rd parties for marketing purposes or spam you. You can opt out at any time. Message/data rates may apply.
+                Consent is not a condition of purchase.
+                <a href="#" class="ml-1 underline decoration-1 underline-offset-2">Terms</a>
+                <span class="mx-1">|</span>
+                <a href="#" class="underline decoration-1 underline-offset-2">Privacy Policy</a>
+              </span>
+            </label>
+  
+            <button type="submit"
+              class="mt-2 w-full rounded-xl bg-emerald-600 px-6 py-4 text-white font-semibold text-lg shadow-sm hover:bg-emerald-700 active:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">
+              Get This Special Now
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    (() => {
+      const root = document.querySelector('#specialsSlider');
+      if (!root) return;
+  
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const dots   = Array.from(root.querySelectorAll('.dot'));
+      const prev   = root.querySelector('[data-slide="prev"]');
+      const next   = root.querySelector('[data-slide="next"]');
+  
+      let i = 0;
+      let timer;
+  
+      function show(n) {
+        i = (n + slides.length) % slides.length;
+        slides.forEach((s, idx) => s.classList.toggle('hidden', idx !== i));
+        dots.forEach((d, idx) => {
+          d.setAttribute('aria-current', idx === i ? 'true' : 'false');
+          d.classList.toggle('bg-emerald-600', idx === i);
+          d.classList.toggle('bg-slate-300', idx !== i);
+        });
+      }
+  
+      function start() {
+        stop();
+        timer = setInterval(() => show(i + 1), 8000);
+      }
+      function stop() { if (timer) clearInterval(timer); }
+  
+      prev.addEventListener('click', () => { show(i - 1); start(); });
+      next.addEventListener('click', () => { show(i + 1); start(); });
+      dots.forEach((d, idx) => d.addEventListener('click', () => { show(idx); start(); }));
+  
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+  
+      // initial
+      show(0);
+      start();
+    })();
+  </script>
+<!-- =============================
+     Service Areas: List + Map
+     with full-width background image
+============================== -->
+<section id="service-areas" class="relative isolate overflow-hidden">
+    <!-- Full-width background image -->
+    <img
+      src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 -z-10 h-full w-full object-cover" />
+    <!-- Soft wash to keep contrast readable on top of the bg image -->
+    <div class="absolute inset-0 -z-10 bg-white/80"></div>
+  
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20 grid gap-10 lg:gap-14 md:grid-cols-[minmax(480px,560px)_1fr]">
+  
+      <!-- LEFT: Card with scrollable list -->
+      <div class="rounded-3xl ring-1 ring-black/10 bg-white shadow-sm">
+        <div class="p-6 sm:p-8">
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-700">
+            Experience Local Comfort
+          </p>
+          <h2 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+            Find your nearest Filterbuy service center in South Florida today!
+          </h2>
+        </div>
+  
+        <!-- List -->
+        <ul id="locationList"
+            class="px-2 sm:px-4 pb-4 divide-y divide-slate-200 max-h-[560px] overflow-y-auto"
+            aria-label="Service locations">
+          <!-- Each list item: update data-lat/data-lon if needed -->
+          <li class="location-row group flex items-center gap-4 px-4 sm:px-6 py-5 cursor-pointer"
+              data-city="West Palm Beach, FL"
+              data-lat="26.7153" data-lon="-80.0534" data-phone="(561) 448-3760">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-emerald-200 bg-emerald-50 text-emerald-700 shrink-0">
+              <!-- pin -->
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+              </svg>
+            </div>
+            <div class="min-w-0 grow">
+              <p class="font-semibold text-slate-900 truncate">West Palm Beach, FL</p>
+              <a class="text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                 href="tel:+15614483760">Phone: (561) 448-3760</a>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <button type="button"
+                      class="text-slate-700 hover:text-slate-900 inline-flex items-center gap-2 font-semibold">
+                <span class="hidden sm:inline">View Location</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586 8.707 12.88a1 1 0 01-1.414-1.415L10.172 9H4a1 1 0 010-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </button>
+              <a href="#contact"
+                 class="rounded-xl bg-emerald-600 px-4 py-2 text-white font-semibold hover:bg-emerald-700">Book Now</a>
+            </div>
+          </li>
+  
+          <li class="location-row group flex items-center gap-4 px-4 sm:px-6 py-5 cursor-pointer"
+              data-city="Pompano Beach, FL"
+              data-lat="26.2379" data-lon="-80.1248" data-phone="(754) 484-4453">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-emerald-200 bg-emerald-50 text-emerald-700 shrink-0">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="min-w-0 grow">
+              <p class="font-semibold text-slate-900 truncate">Pompano Beach, FL</p>
+              <a class="text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                 href="tel:+17544844453">Phone: (754) 484-4453</a>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <button type="button"
+                      class="text-slate-700 hover:text-slate-900 inline-flex items-center gap-2 font-semibold">
+                <span class="hidden sm:inline">View Location</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586 8.707 12.88a1 1 0 01-1.414-1.415L10.172 9H4a1 1 0 010-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </button>
+              <a href="#contact" class="rounded-xl bg-emerald-600 px-4 py-2 text-white font-semibold hover:bg-emerald-700">Book Now</a>
+            </div>
+          </li>
+  
+          <li class="location-row group flex items-center gap-4 px-4 sm:px-6 py-5 cursor-pointer"
+              data-city="Miami, FL"
+              data-lat="25.7617" data-lon="-80.1918" data-phone="(305) 306-5027">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-emerald-200 bg-emerald-50 text-emerald-700 shrink-0">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="min-w-0 grow">
+              <p class="font-semibold text-slate-900 truncate">Miami, FL</p>
+              <a class="text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                 href="tel:+13053065027">Phone: (305) 306-5027</a>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <button type="button"
+                      class="text-slate-700 hover:text-slate-900 inline-flex items-center gap-2 font-semibold">
+                <span class="hidden sm:inline">View Location</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586 8.707 12.88a1 1 0 01-1.414-1.415L10.172 9H4a1 1 0 010-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </button>
+              <a href="#contact" class="rounded-xl bg-emerald-600 px-4 py-2 text-white font-semibold hover:bg-emerald-700">Book Now</a>
+            </div>
+          </li>
+  
+          <li class="location-row group flex items-center gap-4 px-4 sm:px-6 py-5 cursor-pointer"
+              data-city="Weston, FL"
+              data-lat="26.1004" data-lon="-80.3998" data-phone="(754) 296-3528">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-emerald-200 bg-emerald-50 text-emerald-700 shrink-0">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="min-w-0 grow">
+              <p class="font-semibold text-slate-900 truncate">Weston, FL</p>
+              <a class="text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                 href="tel:+17542963528">Phone: (754) 296-3528</a>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <button type="button"
+                      class="text-slate-700 hover:text-slate-900 inline-flex items-center gap-2 font-semibold">
+                <span class="hidden sm:inline">View Location</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586 8.707 12.88a1 1 0 01-1.414-1.415L10.172 9H4a1 1 0 010-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </button>
+              <a href="#contact" class="rounded-xl bg-emerald-600 px-4 py-2 text-white font-semibold hover:bg-emerald-700">Book Now</a>
+            </div>
+          </li>
+  
+          <li class="location-row group flex items-center gap-4 px-4 sm:px-6 py-5 cursor-pointer"
+              data-city="Boca Raton, FL"
+              data-lat="26.3683" data-lon="-80.1289" data-phone="(561) 501-3430">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-emerald-200 bg-emerald-50 text-emerald-700 shrink-0">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="min-w-0 grow">
+              <p class="font-semibold text-slate-900 truncate">Boca Raton, FL</p>
+              <a class="text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                 href="tel:+15615013430">Phone: (561) 501-3430</a>
+            </div>
+            <div class="ml-auto flex items-center gap-3">
+              <button type="button"
+                      class="text-slate-700 hover:text-slate-900 inline-flex items-center gap-2 font-semibold">
+                <span class="hidden sm:inline">View Location</span>
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13 8.586 8.707 12.88a1 1 0 01-1.414-1.415L10.172 9H4a1 1 0 010-2h6.172L7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </button>
+              <a href="#contact" class="rounded-xl bg-emerald-600 px-4 py-2 text-white font-semibold hover:bg-emerald-700">Book Now</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- RIGHT: Map -->
+      <div class="relative min-h-[560px] rounded-3xl overflow-hidden ring-1 ring-black/10 bg-white/70 backdrop-blur-sm">
+        <iframe id="osmMap" title="Service area map"
+                class="absolute inset-0 h-full w-full"
+                style="border:0"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-80.3534,26.5653,-79.7534,26.8653&layer=mapnik&marker=26.7153%2C-80.0534">
+        </iframe>
+        <!-- Optional link to open map -->
+        <a id="osmLink" target="_blank" rel="noopener"
+           class="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 shadow ring-1 ring-black/10 hover:bg-white"
+           href="https://www.openstreetmap.org/?mlat=26.7153&mlon=-80.0534#map=11/26.7153/-80.0534">
+          Open map
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M12.586 3H7a2 2 0 00-2 2v5.586l2-2V5h5.586l-2 2H14V3h-1.414z"/><path d="M5 9.414V15a2 2 0 002 2h5.586l-2-2H7v-3.586l-2 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // Simple OSM switching by coordinates (no API key needed).
+    (() => {
+      const rows = document.querySelectorAll('#locationList .location-row');
+      const map  = document.getElementById('osmMap');
+      const link = document.getElementById('osmLink');
+  
+      function setActive(row) {
+        rows.forEach(r => r.classList.remove('bg-emerald-50/40'));
+        row.classList.add('bg-emerald-50/40');
+      }
+  
+      function bboxFor(lat, lon, pad = 0.15) {
+        // OSM bbox = left, bottom, right, top  (lon/lat)
+        const left   = (lon - pad).toFixed(4);
+        const bottom = (lat - pad).toFixed(4);
+        const right  = (lon + pad).toFixed(4);
+        const top    = (lat + pad).toFixed(4);
+        return `${left},${bottom},${right},${top}`;
+      }
+  
+      function updateMap(lat, lon) {
+        const bbox = bboxFor(lat, lon, 0.18);
+        const embed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lon}`;
+        const open  = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=11/${lat}/${lon}`;
+        map.src = embed;
+        link.href = open;
+      }
+  
+      rows.forEach(row => {
+        row.addEventListener('click', () => {
+          const lat = parseFloat(row.dataset.lat);
+          const lon = parseFloat(row.dataset.lon);
+          setActive(row);
+          updateMap(lat, lon);
+        });
+        // Make the small "View Location" button accessible
+        row.querySelector('button')?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          row.click();
+        });
+      });
+  
+      // init to the first row
+      if (rows.length) {
+        setActive(rows[0]);
+      }
+    })();
+  </script>
+<!-- =============================
+     WHY CHOOSE FILTERBUY HVAC SOLUTIONS
+============================== -->
+<section id="why-choose" class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
+      <!-- Top: Image + Copy -->
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <!-- Image left -->
+        <div class="order-1 lg:order-none">
+          <img
+            src="https://images.unsplash.com/photo-1604881987923-1617185f2b1e?q=80&w=1280&auto=format&fit=crop"
+            alt="Filterbuy technician smiling while servicing an HVAC unit"
+            class="w-full rounded-3xl object-cover aspect-[4/3] ring-1 ring-black/10 shadow-sm" />
+        </div>
+  
+        <!-- Copy right -->
+        <div>
+          <p class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-700 mb-3">
+            Why Choose Filterbuy HVAC Solutions
+          </p>
+  
+          <h2 class="text-3xl sm:text-4xl lg:text-[40px] leading-tight font-extrabold text-slate-900">
+            We’re committed to providing exceptional HVAC services and top-notch air quality solutions –
+            ensuring your home remains a comfortable sanctuary year-round
+          </h2>
+  
+          <div class="mt-6">
+            <a href="#contact"
+               class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-white font-semibold shadow-sm hover:bg-emerald-700 active:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600">
+              Contact Us Today
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Bottom: Carousel of value cards -->
+      <div class="relative mt-12 lg:mt-16">
+        <!-- Track -->
+        <div id="whyTrack"
+             class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-10 pe-28 no-scrollbar"
+             role="region"
+             aria-label="Why choose Filterbuy - key strengths">
+          <!-- Card 1 -->
+          <article class="min-w-[85%] sm:min-w-[62%] md:min-w-[48%] lg:min-w-[31%] xl:min-w-[23%] snap-start rounded-3xl ring-1 ring-emerald-100 bg-emerald-50/50 p-6 sm:p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200">
+                <!-- agility icon -->
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 6a5 5 0 118.9 3h2.1a7 7 0 10-12.25 5.1l-1.8 1.8A9 9 0 117 6zm10 5a2 2 0 110 4h-3v3a2 2 0 11-4 0v-3H7a2 2 0 110-4h3V8a2 2 0 114 0v3h3z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold text-slate-900">
+              Agility and Adaptability
+            </h3>
+          </article>
+  
+          <!-- Card 2 -->
+          <article class="min-w-[85%] sm:min-w-[62%] md:min-w-[48%] lg:min-w-[31%] xl:min-w-[23%] snap-start rounded-3xl ring-1 ring-emerald-100 bg-emerald-50/50 p-6 sm:p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200">
+                <!-- handshake icon -->
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16.5 3a3.5 3.5 0 012.474 5.95l-4.9 4.9a2.5 2.5 0 01-3.536 0l-.987-.987a.75.75 0 011.06-1.06l.988.987a1 1 0 001.415 0l4.9-4.9a2 2 0 10-2.828-2.829l-1.414 1.415a.75.75 0 11-1.061-1.06L13.5 3.88A3.5 3.5 0 0116.5 3zM4.5 6A2.5 2.5 0 017 3.5c.7 0 1.333.286 1.792.746l1.415 1.415a.75.75 0 11-1.06 1.06L7.732 5.36A1 1 0 006.293 6.8l4.899 4.9a.75.75 0 101.061-1.061l-.988-.987a.75.75 0 111.061-1.061l.988.987a2.25 2.25 0 01-3.182 3.183l-4.9-4.9A2.5 2.5 0 014.5 6z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold text-slate-900">
+              Unwavering Customer Focus
+            </h3>
+          </article>
+  
+          <!-- Card 3 -->
+          <article class="min-w-[85%] sm:min-w-[62%] md:min-w-[48%] lg:min-w-[31%] xl:min-w-[23%] snap-start rounded-3xl ring-1 ring-emerald-100 bg-emerald-50/50 p-6 sm:p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200">
+                <!-- ribbon/award -->
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a6 6 0 00-3.56 10.86L8 21l4-2 4 2-.44-8.14A6 6 0 0012 2zm0 2a4 4 0 110 8 4 4 0 010-8z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold text-slate-900">
+              Commitment to Excellence
+            </h3>
+          </article>
+  
+          <!-- Card 4 -->
+          <article class="min-w-[85%] sm:min-w-[62%] md:min-w-[48%] lg:min-w-[31%] xl:min-w-[23%] snap-start rounded-3xl ring-1 ring-emerald-100 bg-emerald-50/50 p-6 sm:p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200">
+                <!-- globe/community -->
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 2.05A8 8 0 0119.95 11H13V4.05zM11 4.05V11H4.05A8 8 0 0111 4.05zM4.05 13H11v6.95A8 8 0 014.05 13zM13 19.95V13h6.95A8 8 0 0113 19.95z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="mt-6 text-2xl font-semibold text-slate-900">
+              Enriching Local Communities
+            </h3>
+          </article>
+  
+          <!-- (Optional) Add more cards if you like) -->
+        </div>
+  
+        <!-- Dots + Arrows -->
+        <div class="pointer-events-none absolute inset-x-0 -bottom-2 sm:bottom-0 flex items-center justify-between">
+          <!-- Dots -->
+          <div class="pointer-events-auto ps-1 sm:ps-2">
+            <div id="whyDots" class="flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 ring-1 ring-black/10 shadow">
+              <!-- JS will populate dots -->
+            </div>
+          </div>
+  
+          <!-- Arrows -->
+          <div class="pointer-events-auto flex items-center gap-2 pe-1 sm:pe-2">
+            <button id="whyPrev"
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white ring-1 ring-black/10 shadow hover:bg-slate-50"
+                    aria-label="Previous">
+              <svg class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L8.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <button id="whyNext"
+                    class="grid h-11 w-11 place-items-center rounded-full bg-white ring-1 ring-black/10 shadow hover:bg-slate-50"
+                    aria-label="Next">
+              <svg class="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13.707 9.293a1 1 0 010 1.414L8.707 15.707a1 1 0 01-1.414-1.414L11.586 10 7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tiny carousel helper (no external libs) -->
+  <script>
+    (function () {
+      const track = document.getElementById('whyTrack');
+      if (!track) return;
+  
+      const prevBtn = document.getElementById('whyPrev');
+      const nextBtn = document.getElementById('whyNext');
+      const dotsWrap = document.getElementById('whyDots');
+  
+      const items = Array.from(track.children);
+      const gap = 24; // matches gap-6 (24px)
+      let index = 0;
+  
+      // Compute single card scroll width (item width + gap)
+      function cardWidth() {
+        const first = items[0];
+        if (!first) return track.clientWidth;
+        const rect = first.getBoundingClientRect();
+        return Math.round(rect.width + gap);
+      }
+  
+      // Build dots
+      items.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className =
+          'h-2.5 w-2.5 rounded-full bg-slate-300 aria-[current=true]:bg-emerald-600 transition-colors';
+        dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+        dot.addEventListener('click', () => scrollToIndex(i));
+        dotsWrap.appendChild(dot);
+      });
+  
+      function updateDots(i) {
+        Array.from(dotsWrap.children).forEach((d, idx) => {
+          d.setAttribute('aria-current', String(idx === i));
+        });
+      }
+  
+      function scrollToIndex(i) {
+        index = Math.max(0, Math.min(items.length - 1, i));
+        track.scrollTo({ left: index * cardWidth(), behavior: 'smooth' });
+        updateDots(index);
+      }
+  
+      nextBtn?.addEventListener('click', () => scrollToIndex(index + 1));
+      prevBtn?.addEventListener('click', () => scrollToIndex(index - 1));
+  
+      // Sync dots while user drags/scrolls
+      let raf = null;
+      track.addEventListener('scroll', () => {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const cw = cardWidth();
+          const i = Math.round(track.scrollLeft / cw);
+          if (i !== index) {
+            index = i;
+            updateDots(index);
+          }
+        });
+      }, { passive: true });
+  
+      // Kick off
+      updateDots(0);
+    })();
+  </script>
+  
+  <style>
+    /* Hide scrollbar (optional) */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE & Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+  </style>
+<!-- =============================
+     HEAR IT FROM OUR CUSTOMERS
+============================== -->
+<section id="reviews" class="relative isolate bg-emerald-50/40">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
+      <!-- Heading -->
+      <p class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-700 mb-3">
+        Hear It From Our Customers
+      </p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+        Our HVAC Solutions in Action
+      </h2>
+  
+      <!-- Content -->
+      <div class="mt-8 grid lg:grid-cols-2 gap-10">
+        <!-- Left column -->
+        <div>
+          <!-- Big photo -->
+          <img
+            src="https://images.unsplash.com/photo-1604881987923-1617185f2b1e?q=80&w=1600&auto=format&fit=crop"
+            alt="Filterbuy technician greeting a homeowner beside a service van"
+            class="w-full aspect-[16/9] object-cover rounded-3xl ring-1 ring-black/10 shadow-sm" />
+  
+          <!-- Featured testimonial -->
+          <article class="mt-8 rounded-3xl bg-white ring-2 ring-emerald-400/70 p-6 sm:p-8">
+            <h3 class="text-2xl font-bold text-slate-900">
+              Filterbuy’s HVAC Service Exceeded My Expectations!
+            </h3>
+            <p class="mt-3 text-slate-700 leading-relaxed">
+              Fast, professional service. My A/C is running better than ever!
+            </p>
+  
+            <div class="mt-6 flex items-start gap-4">
+              <!-- Quote mark -->
+              <div class="text-emerald-600">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M7.17 6.17A5.5 5.5 0 002 11.5V22h8v-8H6.5c0-1.93.64-3.42 1.87-4.55A6.3 6.3 0 0112 7V2a10 10 0 00-4.83 4.17zM17.17 6.17A5.5 5.5 0 0012 11.5V22h8v-8H16.5c0-1.93.64-3.42 1.87-4.55A6.3 6.3 0 0122 7V2a10 10 0 00-4.83 4.17z"/>
+                </svg>
+              </div>
+  
+              <div>
+                <p class="font-semibold text-slate-900">Joana L.</p>
+                <p class="text-slate-500 text-sm">Tampa Bay, FL</p>
+              </div>
+            </div>
+          </article>
+        </div>
+  
+        <!-- Right column: review cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Review card -->
+          <figure class="rounded-3xl bg-white p-6 ring-1 ring-black/10 shadow-sm">
+            <!-- Stars -->
+            <div class="flex items-center gap-1 text-amber-500" aria-label="5 out of 5 stars">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+  
+            <blockquote class="mt-3 text-slate-700 leading-relaxed">
+              Totally professional! Great workers! Get your air conditioning troubles
+              taken care of the right way. Use Filterbuy.
+            </blockquote>
+  
+            <figcaption class="mt-6 flex items-center gap-3">
+              <span class="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-700 font-semibold">S</span>
+              <div>
+                <p class="font-semibold text-slate-900">Stephen K.</p>
+                <p class="text-slate-500 text-sm">4 days ago on <span class="font-medium">Google</span></p>
+              </div>
+            </figcaption>
+          </figure>
+  
+          <!-- Review card -->
+          <figure class="rounded-3xl bg-white p-6 ring-1 ring-black/10 shadow-sm">
+            <div class="flex items-center gap-1 text-amber-500" aria-label="5 out of 5 stars">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+  
+            <blockquote class="mt-3 text-slate-700 leading-relaxed">
+              Great experience getting my dryer vent cleaned by Filterbuy. Angelo was very professional,
+              hardworking, and transparent with the entire service. I will certainly be using them again.
+            </blockquote>
+  
+            <a href="#" class="mt-3 inline-block text-emerald-700 font-semibold hover:underline">
+              Read more
+            </a>
+  
+            <figcaption class="mt-6 flex items-center gap-3">
+              <span class="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-700 font-semibold">L</span>
+              <div>
+                <p class="font-semibold text-slate-900">Lawrence R.</p>
+                <p class="text-slate-500 text-sm">7 days ago on <span class="font-medium">Google</span></p>
+              </div>
+            </figcaption>
+          </figure>
+  
+          <!-- Review card -->
+          <figure class="rounded-3xl bg-white p-6 ring-1 ring-black/10 shadow-sm md:col-span-2 lg:col-span-1">
+            <div class="flex items-center gap-1 text-amber-500" aria-label="5 out of 5 stars">
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+  
+            <blockquote class="mt-3 text-slate-700 leading-relaxed">
+              Am very pleased with Filterbuy HVAC Solutions! They were on time and they were very friendly
+              and professional! Also very knowledgeable! Thx guys!!
+            </blockquote>
+  
+            <figcaption class="mt-6 flex items-center gap-3">
+              <span class="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-slate-700 font-semibold">C</span>
+              <div>
+                <p class="font-semibold text-slate-900">Cindy B.</p>
+                <p class="text-slate-500 text-sm">10 days ago on <span class="font-medium">Google</span></p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+          <!-- =============================
+     RESOURCES / HOME INSIGHTS
+============================== -->
+<section id="resources" class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16 grid lg:grid-cols-2 gap-10">
+      <!-- Left: Featured article image card -->
+      <figure class="relative rounded-[2rem] overflow-hidden ring-1 ring-black/10 shadow-sm">
+        <img
+          class="h-[540px] w-full object-cover"
+          src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1600&auto=format&fit=crop"
+          alt="Technician inspecting flexible air duct"
+        />
+        <!-- Overlay pill CTA -->
+        <a
+          href="#"
+          class="group absolute bottom-6 left-6 inline-flex items-center gap-3 rounded-full bg-white/95 backdrop-blur px-6 py-4 text-slate-900 font-semibold ring-1 ring-black/10 hover:bg-white transition"
+        >
+          <span class="block">
+            Unmasking The Hidden Spore: A Step-By-Step Guide To Clear Air Ducts
+          </span>
+          <svg class="h-5 w-5 text-emerald-600 transition-transform group-hover:translate-x-1"
+               viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"/>
+          </svg>
+        </a>
+      </figure>
+  
+      <!-- Right: List of insights -->
+      <div class="flex flex-col">
+        <p class="text-xs font-semibold tracking-[0.22em] uppercase text-emerald-700">
+          Resources
+        </p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Filterbuy Home Insights
+        </h2>
+  
+        <ul class="mt-8 space-y-6">
+          <!-- Item 1 -->
+          <li>
+            <a href="#" class="group flex items-start gap-5 p-2 -m-2 rounded-2xl hover:bg-emerald-50/50 transition">
+              <img
+                src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=600&auto=format&fit=crop"
+                alt="Technician installing outdoor AC unit"
+                class="h-28 w-28 shrink-0 rounded-xl object-cover ring-1 ring-black/10"
+              />
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  AC Replacement On A Dime – Simple Steps To Stay Cool Without The Big Price Tag
+                </h3>
+                <div class="mt-2 inline-flex items-center gap-2 text-emerald-700 font-semibold">
+                  Read More
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                       viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </li>
+  
+          <!-- Item 2 -->
+          <li>
+            <a href="#" class="group flex items-start gap-5 p-2 -m-2 rounded-2xl hover:bg-emerald-50/50 transition">
+              <img
+                src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ac?q=80&w=600&auto=format&fit=crop"
+                alt="HVAC condenser near service vehicle"
+                class="h-28 w-28 shrink-0 rounded-xl object-cover ring-1 ring-black/10"
+              />
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  How Much Does A New AC Unit For A House Cost Near You?
+                </h3>
+                <div class="mt-2 inline-flex items-center gap-2 text-emerald-700 font-semibold">
+                  Read More
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                       viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </li>
+  
+          <!-- Item 3 -->
+          <li>
+            <a href="#" class="group flex items-start gap-5 p-2 -m-2 rounded-2xl hover:bg-emerald-50/50 transition">
+              <img
+                src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop"
+                alt="Technician charging AC system"
+                class="h-28 w-28 shrink-0 rounded-xl object-cover ring-1 ring-black/10"
+              />
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  24/7 Emergency HVAC Repair Near Me – Same Day Heat And AC Service
+                </h3>
+                <div class="mt-2 inline-flex items-center gap-2 text-emerald-700 font-semibold">
+                  Read More
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                       viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+  
+        <!-- View All -->
+        <div class="mt-8">
+          <a
+            href="#"
+            class="inline-flex items-center justify-center rounded-2xl px-6 py-4 text-slate-900 font-semibold ring-2 ring-emerald-600/40 hover:ring-emerald-600 transition"
+          >
+            View All Resources
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- =========================================
+     LEGACY / STATS SECTION
+========================================= -->
+<section class="relative isolate bg-emerald-50/50">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
+      <!-- Headline/top -->
+      <p class="text-xs font-semibold tracking-[0.22em] text-emerald-700 uppercase">
+        A Legacy of Excellence for Three Generations
+      </p>
+      <h2 class="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 max-w-5xl">
+        Over 70 years of trusted service, innovative solutions, and unwavering commitment to customers.
+      </h2>
+  
+      <!-- Main grid -->
+      <div class="mt-8 lg:mt-12 grid lg:grid-cols-12 gap-8 items-start">
+        <!-- Left: Image -->
+        <figure class="lg:col-span-5">
+          <div class="rounded-[2rem] overflow-hidden ring-1 ring-black/10">
+            <img
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop"
+              alt="Filterbuy technicians beside an air handler"
+              class="w-full h-[520px] object-cover"
+            />
+          </div>
+        </figure>
+  
+        <!-- Center: Stat cards -->
+        <div class="lg:col-span-4 grid sm:grid-cols-2 gap-6">
+          <!-- Card 1 -->
+          <div class="rounded-3xl bg-white ring-1 ring-black/10 p-6 sm:p-7 shadow-sm">
+            <div class="flex items-start gap-4">
+              <!-- Icon -->
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100">
+                <!-- people/reviews icon -->
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+                  <path d="M16 11a4 4 0 10-8 0 4 4 0 008 0zM6 18a6 6 0 1112 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-1z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="text-3xl font-extrabold text-slate-900">500+</p>
+                <p class="mt-1 text-sm font-semibold tracking-wide text-emerald-700 uppercase">
+                  5 Star Reviews
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="rounded-3xl bg-white ring-1 ring-black/10 p-6 sm:p-7 shadow-sm">
+            <div class="flex items-start gap-4">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100">
+                <!-- family/heart hands -->
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+                  <path d="M12 21s-6.716-4.623-9.193-7.1A5.5 5.5 0 116.5 6.5L12 12l5.5-5.5A5.5 5.5 0 1121.193 13.9C18.716 16.377 12 21 12 21z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="text-3xl font-extrabold text-slate-900">Family</p>
+                <p class="mt-1 text-sm font-semibold tracking-wide text-emerald-700 uppercase">Owned</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Card 3 -->
+          <div class="rounded-3xl bg-white ring-1 ring-black/10 p-6 sm:p-7 shadow-sm">
+            <div class="flex items-start gap-4">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100">
+                <!-- communities icon -->
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+                  <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM2 22a10 10 0 1120 0H2z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="text-3xl font-extrabold text-slate-900">200+</p>
+                <p class="mt-1 text-sm font-semibold tracking-wide text-emerald-700 uppercase">Communities</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Card 4 -->
+          <div class="rounded-3xl bg-white ring-1 ring-black/10 p-6 sm:p-7 shadow-sm">
+            <div class="flex items-start gap-4">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100">
+                <!-- employees icon -->
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+                  <path d="M16 11a4 4 0 10-8 0 4 4 0 008 0zM3 20a7 7 0 0114 0v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-1z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="text-3xl font-extrabold text-slate-900">1,000+</p>
+                <p class="mt-1 text-sm font-semibold tracking-wide text-emerald-700 uppercase">Employees</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right: Copy + CTA -->
+        <div class="lg:col-span-3">
+          <p class="text-lg leading-8 text-slate-700">
+            <span class="font-semibold text-slate-900">At Filterbuy, our legacy of excellence is reflected in the numbers:</span>
+            over 500 positive star reviews, a proud family-owned tradition, service in more than 200 communities, and a dedicated team of over 1,000 employees.
+          </p>
+          <p class="mt-5 text-lg leading-8 text-slate-700">
+            Each statistic is a testament to our commitment to quality, innovation, and customer satisfaction in every home we serve.
+          </p>
+  
+          <a
+            href="#"
+            class="mt-7 inline-flex items-center justify-center rounded-2xl bg-white px-6 py-4 font-semibold text-slate-900 ring-2 ring-emerald-600/40 hover:ring-emerald-600 transition"
+          >
+            Our Story
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- =========================================
+     FAQ / ACCORDION SECTION
+========================================= -->
+<section id="faqs" class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-14 lg:py-20">
+      <!-- Eyebrow + Heading -->
+      <p class="text-xs font-semibold tracking-[0.22em] text-emerald-700 uppercase">
+        Frequently Asked Questions
+      </p>
+      <h2 class="mt-2 max-w-4xl text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+        Your questions, our expertise – everything you need to know
+      </h2>
+  
+      <!-- Grid -->
+      <div class="mt-8 lg:mt-12 grid gap-6 lg:gap-7 md:grid-cols-2">
+        <!-- Item 1 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              How do I know if my HVAC system needs repair or a tune-up?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            If you notice uneven temperatures, higher energy bills, unusual noises, or poor airflow, it may be time for service. 
+            Seasonal tune-ups help prevent breakdowns and keep your system efficient year-round.
+          </div>
+        </details>
+  
+        <!-- Item 2 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              Why is regular air duct cleaning important, and how is it performed?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            Clean ducts can improve indoor air quality and airflow. Our process uses negative-pressure equipment and 
+            agitation tools to safely remove dust, debris, and allergens from your ductwork.
+          </div>
+        </details>
+  
+        <!-- Item 3 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              Do you offer no-obligation, free estimates for HVAC service?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            Yes! We provide free, no-pressure estimates so you can make the best decision for your home and budget.
+          </div>
+        </details>
+  
+        <!-- Item 4 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              What benefits do HVAC UV light and air purifier/ionizer installations offer?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            UV systems and air purifiers help reduce airborne contaminants such as bacteria, viruses, and mold spores, 
+            improving indoor air quality and comfort.
+          </div>
+        </details>
+  
+        <!-- Item 5 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              How do Filterbuy care plans work, and what do they cover?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            Care plans include regular maintenance visits, priority scheduling, and exclusive discounts—designed to keep 
+            your system running efficiently and reliably.
+          </div>
+        </details>
+  
+        <!-- Item 6 -->
+        <details class="group rounded-3xl bg-emerald-50/70 ring-1 ring-emerald-100 open:bg-emerald-50 transition">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer px-6 sm:px-7 py-6 sm:py-7">
+            <span class="text-lg sm:text-xl font-semibold text-slate-900">
+              What is the duct sealing process, and why is it important for my HVAC system?
+            </span>
+            <svg class="shrink-0 h-5 w-5 text-emerald-600 transition-transform duration-300 group-open:rotate-180"
+                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-700 leading-relaxed">
+            Duct sealing closes leaks that waste energy and reduce comfort. Properly sealed ducts improve airflow, 
+            reduce dust, and help your system heat and cool more efficiently.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+<!-- =========================================
+     GET A FREE QUOTE SECTION
+     (Full-width soft green background + subtle wave image)
+========================================= -->
+<section class="relative isolate overflow-hidden">
+    <!-- soft gradient base -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-emerald-50 via-emerald-100 to-emerald-50"></div>
+    <!-- subtle waves texture (non-interactive) -->
+    <div
+      class="absolute inset-0 -z-10 opacity-30 pointer-events-none bg-center bg-cover"
+      style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop');">
+    </div>
+  
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-14 lg:py-20 text-center">
+      <p class="text-sm font-semibold tracking-[0.22em] text-emerald-700 uppercase">
+        Need Expert HVAC Service?
+      </p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+        Get a Free Quote for Your Home!
+      </h2>
+  
+      <!-- FORM -->
+      <form class="mt-10" action="#" method="post" aria-labelledby="quote-title">
+        <h3 id="quote-title" class="sr-only">Free Quote Form</h3>
+  
+        <!-- Grid: 3 on first row, zip/select/button on second -->
+        <div class="grid gap-4 lg:gap-5 lg:grid-cols-12">
+          <!-- Full Name -->
+          <label class="lg:col-span-4">
+            <span class="sr-only">Full Name</span>
+            <input
+              type="text"
+              name="full_name"
+              autocomplete="name"
+              placeholder="FULL NAME"
+              required
+              class="w-full rounded-2xl border-0 ring-1 ring-emerald-200 bg-white px-5 py-5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-emerald-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </label>
+  
+          <!-- Email -->
+          <label class="lg:col-span-4">
+            <span class="sr-only">Email</span>
+            <input
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="EMAIL"
+              required
+              class="w-full rounded-2xl border-0 ring-1 ring-emerald-200 bg-white px-5 py-5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-emerald-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </label>
+  
+          <!-- Phone -->
+          <label class="lg:col-span-4">
+            <span class="sr-only">Phone Number</span>
+            <input
+              type="tel"
+              name="phone"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="PHONE NUMBER"
+              required
+              class="w-full rounded-2xl border-0 ring-1 ring-emerald-200 bg-white px-5 py-5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-emerald-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </label>
+  
+          <!-- ZIP -->
+          <label class="lg:col-span-4">
+            <span class="sr-only">ZIP Code</span>
+            <input
+              type="text"
+              name="zip"
+              inputmode="numeric"
+              autocomplete="postal-code"
+              placeholder="ZIP CODE"
+              required
+              class="w-full rounded-2xl border-0 ring-1 ring-emerald-200 bg-white px-5 py-5 text-slate-900 placeholder:font-semibold placeholder:tracking-wide placeholder:text-emerald-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+          </label>
+  
+          <!-- Service Choice -->
+          <div class="relative lg:col-span-4">
+            <label for="service" class="sr-only">Service Choice</label>
+            <select
+              id="service"
+              name="service"
+              required
+              class="w-full appearance-none rounded-2xl border-0 ring-1 ring-emerald-200 bg-white px-5 py-5 pr-12 text-slate-900 font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            >
+              <option value="" disabled selected>SERVICE CHOICE</option>
+              <option>AC Repair</option>
+              <option>AC Installation / Replacement</option>
+              <option>Maintenance / Tune-Up</option>
+              <option>Air Duct &amp; IAQ</option>
+            </select>
+            <!-- chevrons -->
+            <svg class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+  
+          <!-- Submit -->
+          <div class="lg:col-span-4">
+            <button
+              type="submit"
+              class="w-full rounded-2xl bg-emerald-600 px-6 py-5 text-white text-lg font-semibold shadow-sm hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+  
+        <!-- Consent -->
+        <label class="mt-6 flex items-start gap-3 text-[15px] text-slate-700 leading-relaxed text-left max-w-5xl mx-auto lg:mx-0">
+          <input
+            type="checkbox"
+            required
+            class="mt-1 h-5 w-5 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-600"
+          />
+          <span>
+            By submitting, you authorize Filterbuy Local, LLC to reach out via phone, email, or text for explicit
+            information about the requested HVAC service. We will never share your personal information with 3rd parties
+            for marketing purposes or spam you. You can opt out at any time. Message/data rates may apply. Consent is not
+            a condition of purchase.
+            <a href="#" class="underline decoration-1 underline-offset-2 text-emerald-700 hover:text-emerald-800"> Terms </a>
+            |
+            <a href="#" class="underline decoration-1 underline-offset-2 text-emerald-700 hover:text-emerald-800"> Privacy Policy </a>
+          </span>
+        </label>
+      </form>
+    </div>
+  </section>
+<!-- ======= FOOTER ======= -->
+<footer class="bg-[#0B0F14] text-slate-200">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16">
+      <!-- Top: logo + contact + service columns -->
+      <div class="grid gap-12 lg:grid-cols-12">
+        <!-- Brand / Contact -->
+        <div class="lg:col-span-4">
+          <!-- Logo -->
+          <a href="/" class="inline-flex items-center gap-3">
+            <!-- Replace with your SVG/PNG -->
+            <img src="/assets/filterbuy-logo-light.svg" alt="Filterbuy HVAC Solutions" class="h-12 w-auto">
+          </a>
+  
+          <!-- Contact list -->
+          <ul class="mt-8 space-y-5 text-base leading-7">
+            <li class="flex items-start gap-3">
+              <!-- phone icon -->
+              <svg class="h-6 w-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.25 6.75A3 3 0 0 1 5.25 3.75h1.5A1.5 1.5 0 0 1 8.25 5.25v2.25a1.5 1.5 0 0 1-.44 1.06l-1.02 1.02a.75.75 0 0 0-.06 1.01 12.76 12.76 0 0 0 6.23 6.23.75.75 0 0 0 1.01-.06l1.02-1.02c.28-.28.66-.44 1.06-.44h2.25a1.5 1.5 0 0 1 1.5 1.5v1.5a3 3 0 0 1-3 3h-.18C9.33 21.75 2.25 14.67 2.25 6.93v-.18Z"/></svg>
+              <div>
+                <div class="text-slate-400">Phone</div>
+                <a href="tel:+17547144666" class="font-semibold hover:text-white">(754) 714-4666</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <!-- email icon -->
+              <svg class="h-6 w-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 7.5A3 3 0 0 1 4.5 4.5h15a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3v-9Zm3-.75a.75.75 0 0 0-.75.75v.28l7.66 4.49a1.5 1.5 0 0 0 1.48 0l7.66-4.49v-.28a.75.75 0 0 0-.75-.75h-15Z"/></svg>
+              <div>
+                <div class="text-slate-400">Email</div>
+                <a href="mailto:hvacsolutions@filterbuy.com" class="font-semibold hover:text-white">hvacsolutions@filterbuy.com</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <!-- map pin -->
+              <svg class="h-6 w-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.25A7.5 7.5 0 0 0 4.5 9.75c0 5.25 7.5 11.25 7.5 11.25s7.5-6 7.5-11.25A7.5 7.5 0 0 0 12 2.25Zm0 10.125A2.625 2.625 0 1 1 12 7.125a2.625 2.625 0 0 1 0 5.25Z"/></svg>
+              <div>
+                <div class="text-slate-400">Address</div>
+                <p class="font-semibold">
+                  2521 NE 4th Ave, Pompano Beach, FL 33064
+                </p>
+              </div>
+            </li>
+          </ul>
+  
+          <!-- Socials -->
+          <div class="mt-8 flex items-center gap-4">
+            <a href="#" aria-label="Google" class="rounded-full bg-white/5 p-2 ring-1 ring-white/10 hover:bg-white/10 transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#EA4335" d="M12 10.2v3.7h5.2c-.2 1.2-1.6 3.6-5.2 3.6-3.1 0-5.6-2.6-5.6-5.8s2.5-5.8 5.6-5.8c1.8 0 3 .7 3.7 1.4l2.5-2.4C16.9 3.1 14.7 2 12 2 6.9 2 2.8 6.1 2.8 11.2S6.9 20.4 12 20.4c6 0 8.1-4.2 8.1-6.2 0-.4 0-.7-.1-1H12z"/>
+                <path fill="#4285F4" d="M20.4 10.8H12v3.1h4.8c-.2 1.2-1.6 3.6-4.8 3.6-2.9 0-5.3-2.4-5.3-5.3s2.4-5.3 5.3-5.3c1.7 0 2.8.7 3.4 1.3l2.3-2.2C16.3 4.7 14.3 3.7 12 3.7 7.9 3.7 4.6 7 4.6 11.1s3.3 7.4 7.4 7.4c4.5 0 7.7-3.2 7.7-7.7 0-.3 0-.6-.1-1z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="rounded-full bg-white/5 p-2 ring-1 ring-white/10 hover:bg-white/10 transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 9.5V7.75c0-.69.56-1.25 1.25-1.25h1.25V4h-2.5A3.75 3.75 0 0 0 9.75 7.75V9.5H8v2.5h1.75V20h2.75v-8h2l.5-2.5h-2.5Z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="rounded-full bg-white/5 p-2 ring-1 ring-white/10 hover:bg-white/10 transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm6.25-.75a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 18.25 6.75ZM12 9.5A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5Z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="rounded-full bg-white/5 p-2 ring-1 ring-white/10 hover:bg-white/10 transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 4.98 3.5ZM3.5 9h3v12h-3V9Zm6.75 0h2.88v1.64h.04a3.16 3.16 0 0 1 2.84-1.56c3.04 0 3.6 2 3.6 4.6V21h-3v-5.33c0-1.27 0-2.9-1.77-2.9s-2.04 1.38-2.04 2.81V21h-3V9Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+  
+        <!-- Services columns -->
+        <div class="lg:col-span-8">
+          <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Column -->
+            <div>
+              <h3 class="text-xl font-semibold text-white">Cooling</h3>
+              <ul class="mt-6 space-y-3 text-slate-300">
+                <li><a class="hover:text-white" href="#">AC Installation</a></li>
+                <li><a class="hover:text-white" href="#">Emergency Repairs</a></li>
+                <li><a class="hover:text-white" href="#">Maintenance</a></li>
+                <li><a class="hover:text-white" href="#">Ductless</a></li>
+                <li><a class="hover:text-white" href="#">HVAC Restorations</a></li>
+              </ul>
+            </div>
+  
+            <div>
+              <h3 class="text-xl font-semibold text-white">Air Quality</h3>
+              <ul class="mt-6 space-y-3 text-slate-300">
+                <li><a class="hover:text-white" href="#">Duct Cleaning</a></li>
+                <li><a class="hover:text-white" href="#">Duct Encapsulation</a></li>
+                <li><a class="hover:text-white" href="#">UV Lights</a></li>
+                <li><a class="hover:text-white" href="#">HVAC Restorations</a></li>
+              </ul>
+            </div>
+  
+            <div>
+              <h3 class="text-xl font-semibold text-white">Ductwork</h3>
+              <ul class="mt-6 space-y-3 text-slate-300">
+                <li><a class="hover:text-white" href="#">Duct Replacement</a></li>
+                <li><a class="hover:text-white" href="#">Duct Repair</a></li>
+                <li><a class="hover:text-white" href="#">Duct Cleaning</a></li>
+                <li><a class="hover:text-white" href="#">Duct Encapsulation</a></li>
+                <li><a class="hover:text-white" href="#">Duct Sealing</a></li>
+              </ul>
+            </div>
+  
+            <div>
+              <h3 class="text-xl font-semibold text-white">Other Services</h3>
+              <ul class="mt-6 space-y-3 text-slate-300">
+                <li><a class="hover:text-white" href="#">Attic Insulation</a></li>
+                <li><a class="hover:text-white" href="#">Dryer Vent Cleaning</a></li>
+                <li><a class="hover:text-white" href="#">Smart Thermostat</a></li>
+                <li><a class="hover:text-white" href="#">Duct Sealing</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Middle: nav + CTAs -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8">
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[17px]">
+          <a class="font-semibold text-emerald-500" href="#">Home</a>
+          <a class="hover:text-white" href="#">About</a>
+          <a class="hover:text-white" href="#">Reviews</a>
+          <a class="hover:text-white" href="#">Financing</a>
+          <a class="hover:text-white" href="#">Resources/Blog</a>
+          <a class="hover:text-white" href="#">Contact Us</a>
+        </nav>
+  
+        <div class="ml-0 md:ml-auto flex items-center gap-3">
+          <a href="#"
+             class="inline-flex items-center rounded-xl border border-emerald-600/60 px-5 py-2.5 font-semibold text-emerald-400 hover:bg-emerald-600/10">
+            Specials
+          </a>
+          <a href="#"
+             class="inline-flex items-center rounded-xl bg-emerald-600 px-6 py-2.5 font-semibold text-white hover:bg-emerald-500">
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <p class="text-sm text-slate-400">
+          Filterbuy HVAC Solutions ©<span id="year"></span> All Rights Reserved
+        </p>
+        <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-300">
+          <li><a class="hover:text-white" href="#">Service Areas</a></li>
+          <li><a class="hover:text-white" href="#">Terms of Use</a></li>
+          <li><a class="hover:text-white" href="#">Privacy Policy</a></li>
+          <li><a class="hover:text-white" href="#">Powered by YourAgency</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Auto-insert current year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+          
+
+  <!-- Tiny JS: toggle mobile menu -->
+  <script>
+    const btn = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>
